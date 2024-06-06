@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  frontend:
+    container_name: corporate-bingo
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: .
+          ignore:
+            - node_modules/
+            - .github/
+            - .git/
+    ports:
+      - ${PORT:-8080}:8080
+    healthcheck:
+      test: curl--fail http://localhost:8080 || exit 1
+      interval: 20s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
