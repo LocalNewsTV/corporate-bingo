@@ -1,7 +1,6 @@
 import { StyledHeader, StyledImage } from "./Header.style";
 import logo from '/LogoCropped.png';
 import SettingsButton from "../SettingsButton/SettingsButton";
-import { ReactNode } from "react";
 
 type PropTypes = {
   state: boolean;
