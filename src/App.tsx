@@ -6,7 +6,6 @@ import Main from './components/views/Main/Main';
 
 const App = () => {
   const [viewSettings, setViewSettings] = useState<boolean>(false);
-  console.log(viewSettings, "Hello World");
   const settingsToggle = () => {
     setViewSettings(oldState => !oldState);
   }
