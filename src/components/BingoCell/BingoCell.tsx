@@ -1,3 +1,6 @@
+import { StyledDiv, StyledImage, StyledTd } from "./BingoCell.style";
+import dabbed from '/person-arms-up.svg';
+
 type PropTypes = {
   text: string,
   toggled: boolean,
@@ -11,9 +14,12 @@ const BingoCell = ({
 }: PropTypes) => {
 
   return (
-    <td onClick={clickHandler}>
-      {text} {toggled ? "Toggled" : "Not Toggled"}
-    </td>
+    <StyledTd onClick={clickHandler}>
+      <StyledDiv>
+        {toggled && <StyledImage src={dabbed} />}
+        {text}
+      </StyledDiv>
+    </StyledTd>
   )
 }
 
