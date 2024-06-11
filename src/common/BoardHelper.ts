@@ -7,37 +7,39 @@ const FREE_SPACE: BingoCard = {
 }
 
 class BoardHelper {
+  static defaultPrompts = prompts;
   static loadFromUserSaved = () => {
     const userPrompts = localStorage.getItem("userPrompts");
     if (!userPrompts) { return BoardHelper.generateFromDefault() }
-    return BoardHelper.generateBoard(JSON.parse(userPrompts));
+    return this.generateBoard(JSON.parse(userPrompts));
   }
-  static saveUserPrompts = (userPrompts: Array<string>) => {
+  static saveUserPrompts(userPrompts: Array<string>) {
     localStorage.save("userPrompts", JSON.stringify(userPrompts))
   }
-  static generateFromDefault = () => {
-    return BoardHelper.generateBoard();
+  static generateFromDefault() {
+    return this.generateBoard(this.defaultPrompts);
   }
 
-  static generateBoard = (userSubmittedInput: Array<string> = prompts): Array<Array<BingoCard>> => {
-    if (userSubmittedInput.length < 24) { throw Error("User needs 24 inputs to play"); }
+  static generateBoard(userSubmittedInput: Array<string>): BingoCard[][] {
+    const arrayPrompts = [...userSubmittedInput];
     const board: Array<Array<BingoCard>> = []
     for (let i = 1; i <= 5; i++) {
       const subBoard: Array<BingoCard> = [];
       for (let j = 1; j <= 5; j++) {
         if (i === 3 && j === 3) { subBoard.push(FREE_SPACE); }
         else {
-          const pos = Math.floor(Math.random() * userSubmittedInput.length);
+          const pos = Math.floor(Math.random() * arrayPrompts.length);
           const card: BingoCard = {
-            text: userSubmittedInput[pos],
+            text: arrayPrompts[pos],
             toggled: false
           }
           subBoard.push(card)
-          userSubmittedInput.splice(pos, 1);
+          arrayPrompts.splice(pos, 1);
         }
       }
       board.push(subBoard);
     }
+    console.log("RETURN VAL", board);
     return board
   }
 }
