@@ -11,7 +11,6 @@ type PropTypes = {
 const Main = ({ setup }: PropTypes) => {
   const [prompts, setPrompts] = useState<BingoCard[][]>([]);
   const clickHandler = (x: number, y: number) => {
-    console.log(Date.now(), prompts[x][y].toggled);
     setPrompts((prompts) => {
       const temp = prompts.map((row, rowIndex) => {
         if (rowIndex === x) {

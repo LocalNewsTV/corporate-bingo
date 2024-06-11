@@ -39,7 +39,6 @@ class BoardHelper {
       }
       board.push(subBoard);
     }
-    console.log("RETURN VAL", board);
     return board
   }
 }
