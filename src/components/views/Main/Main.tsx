@@ -6,11 +6,35 @@ import BingoCard from "../../../types/BingoCard";
 
 type PropTypes = {
   setup: boolean,
+  stateToggle: () => void;
 }
 
-const Main = ({ setup }: PropTypes) => {
+const Main = ({ setup, stateToggle }: PropTypes) => {
   const [prompts, setPrompts] = useState<BingoCard[][]>([]);
-  const clickHandler = (x: number, y: number) => {
+  const [textPrompts, setTextPrompts] = useState<string[]>(Array(24).fill(""));
+  const handleLoadButton = () => {
+    setTextPrompts(BoardHelper.loadFromUserSaved())
+  }
+  const handlePlayButton = () => {
+    if ([...new Set(textPrompts)].length == 24) {
+      BoardHelper.saveUserPrompts(textPrompts);
+      setPrompts(BoardHelper.generateBoard(textPrompts))
+      stateToggle();
+    } else {
+      alert("You need 24 unique items to play")
+    }
+  }
+  const handleAllRandom = () => {
+    setTextPrompts(BoardHelper.returnRandomPrompts());
+  }
+  const textPromptHandler = (index: number, newVal: string) => {
+    setTextPrompts((oldPrompts) => {
+      const temp = [...oldPrompts];
+      temp[index] = newVal
+      return temp;
+    })
+  }
+  const handleCardFlip = (x: number, y: number) => {
     setPrompts((prompts) => {
       const temp = prompts.map((row, rowIndex) => {
         if (rowIndex === x) {
@@ -36,9 +60,15 @@ const Main = ({ setup }: PropTypes) => {
       {setup
         ? <Board
           prompts={prompts}
-          clickHandler={clickHandler}
+          clickHandler={handleCardFlip}
         />
-        : <Setup />
+        : <Setup
+          textPrompts={textPrompts}
+          textPromptHandler={textPromptHandler}
+          handlePlayButton={handlePlayButton}
+          handleAllRandom={handleAllRandom}
+          loadUserPrompts={handleLoadButton}
+        />
       }
     </>)
 }

@@ -2,10 +2,11 @@ import styled from "@emotion/styled";
 import { black, navBar } from "../../constants/theming";
 
 export const StyledHeader = styled.header`
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   background: ${navBar};

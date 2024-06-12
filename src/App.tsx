@@ -15,7 +15,10 @@ const App = () => {
         state={viewSettings}
         stateToggle={settingsToggle}
       />
-      <Main setup={viewSettings} />
+      <Main
+        setup={viewSettings}
+        stateToggle={settingsToggle}
+      />
     </>
   )
 }
