@@ -39,8 +39,9 @@ export const StyledDiv = styled.div`
   align-items: center;
   box-sizing: border-box;
   padding: 5pt;
-  overflow-x: scroll;
+  overflow-y: auto;
   &:hover {
     background-color: ${cozyFive};
+    overflow-x: contain;
   }
 `;
