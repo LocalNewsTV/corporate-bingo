@@ -2,12 +2,18 @@ import styled from "@emotion/styled";
 import { cozyFive, hero } from "../../constants/theming";
 
 export const StyledTd = styled.td`
-  height: 100pt;
+  height: 19vw;
+  width: 19vw;
   padding: 0;
-  width: 100pt;
+  font-size: 10px;
   text-wrap: wrap;
   text-align: center;
-  border: 1pt solid ${hero}
+  border: 1pt solid ${hero};
+  @media (min-width: 500pt){
+    width: 100pt;
+    height: 100pt;
+    font-size: 16px;
+  }
 `;
 
 export const StyledImage = styled.img`
@@ -33,6 +39,7 @@ export const StyledDiv = styled.div`
   align-items: center;
   box-sizing: border-box;
   padding: 5pt;
+  overflow-x: scroll;
   &:hover {
     background-color: ${cozyFive};
   }
