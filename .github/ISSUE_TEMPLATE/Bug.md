@@ -3,10 +3,12 @@ name: Bug
 about: There is an issue with the currently deployed work
 title: ""
 labels: "Bug"
-assignees: "@LocalNewsTV"
+assignees: "LocalNewsTV"
 ---
 
 ## Describe the Bug
+
+> Select if applies
 
 - [ ] This bug impacts gameplay
 - [ ] This bug is visual

@@ -3,7 +3,7 @@ name: Feature
 about: New features or content you want to see added
 title: ""
 labels: "Feature"
-assignees: "@LocalNewsTV"
+assignees: "LocalNewsTV"
 ---
 
 ## Describe the task
