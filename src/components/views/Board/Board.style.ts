@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { black, cozyFour, cozyOne, cozyTwo } from "../../../constants/theming";
+import { black, cozyFour, cozyOne, cozyThree } from "../../../constants/theming";
 
 export const StyledHeaderCell = styled.td`
   width:  18vw;
@@ -14,15 +14,40 @@ export const StyledHeaderCell = styled.td`
   }
 `;
 
+export const StyledOuterDiv = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 35pt;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  @media (min-width: 500pt){
+    flex-direction: row;
+    padding-top: 50pt;
+    & > div {
+      margin-left: 1em;
+    }
+  }
+`;
+
 export const StyledRow = styled.tr<{ bgFlip: boolean }>`
-  background-color: ${({ bgFlip }) => bgFlip ? cozyOne : cozyTwo};
+  background-color: ${cozyOne};
+  & > td:nth-of-type(${({ bgFlip }) => bgFlip ? 'odd' : 'even'}) {
+    background-color: ${cozyThree};
+  }
 `;
 
 export const StyledDiv = styled.div`
   background-color: ${cozyFour};
   padding: 10pt 0;
-  border: 1pt solid ${black};
+  border-top: 1pt solid ${black};
+  border-bottom: 1pt solid ${black}; 
   @media (min-width: 500pt){
+    border: 1pt solid ${black};
     padding: 5pt;
     border-radius: 8pt;
   }
