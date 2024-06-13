@@ -3,6 +3,7 @@ import { black, navBar } from "../../constants/theming";
 
 export const StyledHeader = styled.header`
   width: 100%;
+  z-index: 5;
   position: absolute;
   top: 0;
   left: 0;
@@ -15,6 +16,7 @@ export const StyledHeader = styled.header`
   border-bottom: 1pt solid ${black};
   h1 { 
     font-size: 20pt;
+    margin: 0;
   }
   button:last-child {
     margin-left: auto;
