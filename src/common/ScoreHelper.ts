@@ -70,7 +70,7 @@ class ScoreHelper {
     let sum = this.checkColumns();
     sum += this.checkRows();
     if (this.checkAscendingDiagonal()) { sum += 1; }
-    if (this.checkAscendingDiagonal()) { sum += 1; }
+    if (this.checkDescendingDiagonal()) { sum += 1; }
     return { title: "Complete Rows", score: sum };
   }
 
