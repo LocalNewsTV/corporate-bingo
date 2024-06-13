@@ -23,7 +23,7 @@ export const StyledImage = styled.img`
   left: 0;
   position: absolute;
   z-index: 3;
-  opacity: 70%;
+  opacity: 55%;
   fill: red;
   svg {
     fill: red;
