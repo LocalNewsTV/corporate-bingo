@@ -40,8 +40,8 @@ export const StyledDiv = styled.div`
   box-sizing: border-box;
   padding: 5pt;
   overflow-y: auto;
+  overflow-x: contain;
   &:hover {
     background-color: ${cozyFive};
-    overflow-x: contain;
   }
 `;

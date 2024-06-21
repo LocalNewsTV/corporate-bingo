@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { StyledCopy, StyledInput, StyledLi, StyledRandom } from "./PromptCustomizer.style";
+import { StyledListButton, StyledInput, StyledLi } from "./PromptCustomizer.style";
 import BoardHelper from "../../common/BoardHelper";
 
 type PropTypes = {
@@ -19,8 +19,8 @@ const PromptCustomizer = ({ text, index, textPromptHandler }: PropTypes) => {
         value={text}
         onChange={handleChange}
       />
-      <StyledRandom onClick={handleRandom}>Random</StyledRandom>
-      <StyledCopy onClick={handleClear}>Clear</StyledCopy>
+      <StyledListButton onClick={handleRandom}>Random</StyledListButton>
+      <StyledListButton onClick={handleClear}>Clear</StyledListButton>
     </StyledLi>
   )
 }

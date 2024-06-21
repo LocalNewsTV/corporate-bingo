@@ -6,13 +6,13 @@ export const StyledDiv = styled.div`
 
 export const StyledP = styled.p`
   margin: 0.25em 0;
+  font-size: 12pt;
 `;
 
 export const StyledSpan = styled.span`
-  font-weight: bold;
 `;
 
 export const TotalScore = styled.p`
-  font-size: 22pt;
+  font-size: 18pt;
   margin: 0;
 `;

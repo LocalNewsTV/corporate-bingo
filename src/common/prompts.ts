@@ -9,6 +9,8 @@ const prompts = [
   "Let's take this offline.",
   "Can we table that?",
   "Can you see my screen?",
+  "Someone using a virtual avatar",
+  "I'll get back to you on that!",
   "Let's schedule a follow-up.",
   "Sorry, I have to jump to another call.",
   "Sorry for the background noise.",

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { black, navBar } from "../../constants/theming";
+import { black, cozyOne } from "../../constants/theming";
 
 export const StyledHeader = styled.header`
   width: 100%;
@@ -10,7 +10,7 @@ export const StyledHeader = styled.header`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  background: ${navBar};
+  background: ${cozyOne};
   max-height: 35pt;
   padding-left: 1em;
   border-bottom: 1pt solid ${black};
