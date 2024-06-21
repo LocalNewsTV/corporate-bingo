@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { cozyFive, cozyFour, cozyOne, cozyThree, cozyTwo } from "../../constants/theming";
+import { cozyFive, cozyFour, cozyOne, cozyThree } from "../../constants/theming";
 
 const height = '25px';
 

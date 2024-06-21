@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { black, cozyFive, cozyFour, cozyOne, cozyThree } from "../../../constants/theming";
+import { black, cozyFive, cozyFour, cozyOne } from "../../../constants/theming";
 
 export const StyledUl = styled.ul`
   padding: 0;
