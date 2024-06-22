@@ -18,20 +18,20 @@ export const ViewContainer = styled.div`
   display: flex;
   min-height:95vh;
   width: 100%;
-  max-width: 500pt;
+  max-width: 800pt;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
 export const ButtonContainer = styled.div`
-  & > button:nth-of-type(2) {
-    margin: 0 1.5em;
-  }
   display: flex;
+  flex-direction: column;
   width: 100%;
-  justify-content: center;
+  max-width: 200pt;
+  
+  justify-content: left;
   box-sizing: border-box;
   padding: 0 1em;
 
@@ -41,10 +41,45 @@ export const ButtonContainer = styled.div`
     padding: 0 0.75em;
     border: 1pt solid ${cozyFive};
     border-radius: 4pt;
+    margin: 0.25em;
     background-color: ${cozyOne};
   }
   button:hover {
     transition: 1s;
     background-color: ${cozyFour};
+  }
+`
+
+export const StyledSelect = styled.select`
+  padding: 0 0.75em;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 25pt;
+  border-radius: 4pt;
+  margin: 0.25em;
+  border: 1pt solid ${cozyFive};
+  background-color: ${cozyOne};
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const StyledTextInput = styled.input`
+  border: 1pt solid ${cozyFive};
+  background-color: white; //${cozyOne};
+  padding: 0 0.75em;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 25pt;
+  border-radius: 4pt;
+  margin: 0.25em;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const StyledOption = styled.option`
+  &:hover {
+    cursor: pointer;
   }
 `

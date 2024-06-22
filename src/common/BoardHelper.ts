@@ -1,4 +1,6 @@
+import { v4 as uuidv4 } from "uuid";
 import BingoCard from "../types/BingoCard";
+import SavedBingoCard from "../types/SavedBingoCard";
 import prompts from "./prompts"
 
 const FREE_SPACE: BingoCard = {
@@ -28,8 +30,34 @@ class BoardHelper {
    * @desc Saves users prompts to localStorage
    * @param userPrompts Users array of prompts
    */
-  static saveUserPrompts(userPrompts: Array<string>): void {
-    localStorage.setItem("userPrompts", JSON.stringify(userPrompts))
+  static saveUserPrompts(userPrompts: Array<string>, boardName: string): void {
+    const storedUserCards = localStorage.getItem("userBingoCards")
+    console.log("Board name: ", boardName)
+    const userBoard: SavedBingoCard = {
+      id: uuidv4(),
+      boardName: boardName,
+      bingoCard: userPrompts
+    }
+    if (storedUserCards) {
+      const parsedUserCards: SavedBingoCard[] = JSON.parse(storedUserCards) as SavedBingoCard[];
+      let didUpdate = false;
+      for (let i = 0; i < parsedUserCards.length; i++) {
+        console.log(parsedUserCards[i].boardName)
+        if (parsedUserCards[i].boardName === boardName) {
+          parsedUserCards[i].bingoCard = userBoard.bingoCard;
+          console.log("Match on BoardName", boardName)
+          didUpdate = true;
+        }
+      }
+      if (!didUpdate) {
+        console.log("no match on", boardName)
+        parsedUserCards.push(userBoard);
+      }
+      localStorage.setItem("userBingoCards", JSON.stringify(parsedUserCards))
+    } else {
+      localStorage.setItem("userBingoCards", JSON.stringify([userBoard]));
+    }
+
   }
   /**
    * @desc Creates set of BingoCards using the built-in prompts

@@ -15,9 +15,9 @@ const Main = ({ setup, stateToggle }: PropTypes) => {
   const handleLoadButton = () => {
     setTextPrompts(BoardHelper.loadFromUserSaved())
   }
-  const handlePlayButton = () => {
+  const handlePlayButton = (boardName: string) => {
     if ([...new Set(textPrompts)].length == 24) {
-      BoardHelper.saveUserPrompts(textPrompts);
+      if (boardName) { BoardHelper.saveUserPrompts(textPrompts, boardName); }
       setPrompts(BoardHelper.generateBoard(textPrompts))
       stateToggle();
     } else {
