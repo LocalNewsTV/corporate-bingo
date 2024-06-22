@@ -15,8 +15,27 @@ class BoardHelper {
    * @returns string
    */
   static randomPrompt(): string {
-    const index = Math.floor(Math.random() * this.defaultPrompts.length)
+    const index = Math.floor(Date.now() % this.defaultPrompts.length)
     return this.defaultPrompts[index];
+  }
+  static getUserBoards(): SavedBingoCard[] {
+    const local = localStorage.getItem("userBingoCards")
+    if (local) {
+      return JSON.parse(local) as SavedBingoCard[]
+    }
+    return []
+  }
+  static getUserBoard(uuid: string): SavedBingoCard {
+    const local = localStorage.getItem("userBingoCards")
+    if (local) {
+      const savedCards: SavedBingoCard[] = JSON.parse(local) as SavedBingoCard[]
+      for (let i = 0; i < savedCards.length; i++) {
+        if (savedCards[i].id === uuid) {
+          return savedCards[i];
+        }
+      }
+    }
+    return { boardName: "", bingoCard: [], id: "" }
   }
   /**
    * @desc Fetches users local storage data to create set of BingoCards  
@@ -32,7 +51,6 @@ class BoardHelper {
    */
   static saveUserPrompts(userPrompts: Array<string>, boardName: string): void {
     const storedUserCards = localStorage.getItem("userBingoCards")
-    console.log("Board name: ", boardName)
     const userBoard: SavedBingoCard = {
       id: uuidv4(),
       boardName: boardName,
@@ -42,15 +60,12 @@ class BoardHelper {
       const parsedUserCards: SavedBingoCard[] = JSON.parse(storedUserCards) as SavedBingoCard[];
       let didUpdate = false;
       for (let i = 0; i < parsedUserCards.length; i++) {
-        console.log(parsedUserCards[i].boardName)
         if (parsedUserCards[i].boardName === boardName) {
           parsedUserCards[i].bingoCard = userBoard.bingoCard;
-          console.log("Match on BoardName", boardName)
           didUpdate = true;
         }
       }
       if (!didUpdate) {
-        console.log("no match on", boardName)
         parsedUserCards.push(userBoard);
       }
       localStorage.setItem("userBingoCards", JSON.stringify(parsedUserCards))

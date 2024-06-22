@@ -16,13 +16,17 @@ export const StyledUl = styled.ul`
 
 export const ViewContainer = styled.div`
   display: flex;
+  padding-top: 25pt;
   min-height:95vh;
   width: 100%;
   max-width: 800pt;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
+  @media (min-width: 500pt){
+    flex-direction: row;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -47,6 +51,11 @@ export const ButtonContainer = styled.div`
   button:hover {
     transition: 1s;
     background-color: ${cozyFour};
+  }
+  p {
+    margin: 0 0.25em;
+    text-wrap: wrap;
+    font-size: 10pt;  
   }
 `
 

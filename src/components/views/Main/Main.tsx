@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import BoardHelper from "../../../common/BoardHelper";
 import Board from "../Board/Board";
 import Setup from "../Setup/Setup";
@@ -12,9 +12,9 @@ type PropTypes = {
 const Main = ({ setup, stateToggle }: PropTypes) => {
   const [prompts, setPrompts] = useState<BingoCard[][]>([]);
   const [textPrompts, setTextPrompts] = useState<string[]>(Array(24).fill(""));
-  const handleLoadButton = () => {
-    setTextPrompts(BoardHelper.loadFromUserSaved())
-  }
+  const handleLoadButton = useCallback((textPrompts: string[]) => {
+    setTextPrompts(textPrompts)
+  }, [])
   const handlePlayButton = (boardName: string) => {
     if ([...new Set(textPrompts)].length == 24) {
       if (boardName) { BoardHelper.saveUserPrompts(textPrompts, boardName); }
