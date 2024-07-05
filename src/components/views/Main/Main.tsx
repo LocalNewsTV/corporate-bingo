@@ -52,9 +52,14 @@ const Main = ({ setup, stateToggle }: PropTypes) => {
   };
 
   useEffect(() => {
-    setPrompts(BoardHelper.generateFromDefault());
+    setPrompts(BoardHelper.loadBoardState());
   }, [])
 
+  useEffect(() => {
+    if (prompts.length > 0) {
+      BoardHelper.saveBoardState(prompts)
+    }
+  }, [prompts])
   return (
     <>
       {setup

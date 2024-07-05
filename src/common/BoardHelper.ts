@@ -45,6 +45,20 @@ class BoardHelper {
     if (userPrompts == null) { return this.returnRandomPrompts(); }
     return JSON.parse(userPrompts);
   }
+
+  static saveBoardState(currentBoard: BingoCard[][]) {
+    localStorage.setItem("activeGame", JSON.stringify(currentBoard));
+  }
+
+  static loadBoardState(): BingoCard[][] {
+    const activeGame: null | string | BingoCard[][] = localStorage.getItem("activeGame")
+    if (activeGame) {
+      console.log(activeGame);
+      console.log(JSON.parse(activeGame))
+      return JSON.parse(activeGame) as BingoCard[][];
+    }
+    return this.generateFromDefault();
+  }
   /**
    * @desc Saves users prompts to localStorage
    * @param userPrompts Users array of prompts
